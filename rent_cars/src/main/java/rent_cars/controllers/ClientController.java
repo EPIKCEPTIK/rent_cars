@@ -19,7 +19,7 @@ import rent_cars.services.ClientService;
 public class ClientController {
 
     private final ClientRepository clientRepository;
-    private final ClientService clientService; // Додаємо сервіс
+    private final ClientService clientService;
 
     @GetMapping
     @PreAuthorize("hasRole('ADMIN')")

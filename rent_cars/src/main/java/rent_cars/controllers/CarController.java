@@ -26,7 +26,6 @@ public class CarController {
     public ResponseEntity<Page<Car>> getAllCars(
             @Parameter(description = "Назва бренду для пошуку") @RequestParam(required = false) String brand,
 
-            // ЗМІНА ТУТ: Прибираємо defaultValue = "available" і повертаємо required = false
             @Parameter(description = "Статус авто (тільки для Адміна)") @RequestParam(required = false) String status,
 
             @Parameter(description = "Ідентифікатор категорії") @RequestParam(required = false) Long categoryId,

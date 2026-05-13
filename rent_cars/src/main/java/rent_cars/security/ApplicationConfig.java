@@ -21,7 +21,7 @@ public class ApplicationConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return username -> clientRepository.findByEmail(username) // ЗМІНА ТУТ
+        return username -> clientRepository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Користувача не знайдено"));
     }
 

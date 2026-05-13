@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping("/api/maintenance")
 @RequiredArgsConstructor
 @Tag(name = "6.Технічне обслуговування", description = "Управління ремонтами та ТО автомобілів (тільки Адмін)")
-@PreAuthorize("hasRole('ADMIN')") // Усі методи в цьому контролері тільки для Адміна!
+@PreAuthorize("hasRole('ADMIN')")
 public class MaintenanceController {
 
     private final MaintenanceService maintenanceService;

@@ -18,7 +18,7 @@ import org.springframework.data.domain.Sort;
 import java.math.BigDecimal;
 import java.time.Duration;
 
-@Slf4j // Автоматично додає логер для класу
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class RentalService {
