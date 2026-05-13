@@ -19,7 +19,8 @@ public class Car {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
-    @JsonIgnoreProperties("cars") // <--- ОЦЕ ВИПРАВИТЬ ЦИКЛ З КАТЕГОРІЄЮ
+    @JsonIgnoreProperties({"cars", "hibernateLazyInitializer", "handler"})
+
     private CarCategory category;
 
     @Column(nullable = false, length = 50)

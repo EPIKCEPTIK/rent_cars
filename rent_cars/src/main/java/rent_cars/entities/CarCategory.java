@@ -1,7 +1,6 @@
 package rent_cars.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,6 +12,7 @@ import java.util.List;
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class CarCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +27,6 @@ public class CarCategory {
     private String description;
 
     @OneToMany(mappedBy = "category")
-    @JsonIgnoreProperties("category") // <--- РОЗРИВАЄМО ЦИКЛ З ІНШОГО БОКУ
+    @JsonIgnoreProperties("category")
     private List<Car> cars;
 }

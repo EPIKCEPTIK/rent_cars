@@ -20,12 +20,12 @@ public class Rental {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "car_id", nullable = false)
-    @JsonBackReference(value = "car-rentals") // Розірвання циклу з Car
+    @JsonBackReference(value = "car-rentals")
     private Car car;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id", nullable = false)
-    @JsonBackReference(value = "client-rentals") // Розірвання циклу з Client
+    @JsonBackReference(value = "client-rentals")
     private Client client;
 
     @Column(name = "start_date", nullable = false)
