@@ -54,7 +54,6 @@ CREATE TABLE car_categories (
      description TEXT
  );
 
- -- Заповнення даними:
 
  INSERT INTO car_categories (name, base_rate, description) VALUES
  ('Економ', 800.00, 'Малолітражні авто для міста'),
