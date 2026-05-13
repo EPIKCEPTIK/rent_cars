@@ -57,7 +57,7 @@ class RentalServiceTest {
         RentalDto dto = new RentalDto();
         dto.setCarId(1L);
         dto.setStartDate(LocalDateTime.now().plusDays(1));
-        dto.setEndDate(LocalDateTime.now().plusDays(4)); // 3 дні
+        dto.setEndDate(LocalDateTime.now().plusDays(4));
 
         when(carRepository.findById(1L)).thenReturn(Optional.of(car));
         when(clientRepository.findByEmail(userEmail)).thenReturn(Optional.of(client));
@@ -67,7 +67,7 @@ class RentalServiceTest {
 
         assertNotNull(result);
         assertEquals("active", result.getStatus());
-        assertEquals(BigDecimal.valueOf(3000), result.getTotalPrice()); // 1000 * 3
+        assertEquals(BigDecimal.valueOf(3000), result.getTotalPrice());
         assertEquals("rented", car.getStatus());
         verify(carRepository, times(1)).save(car);
     }
@@ -77,7 +77,7 @@ class RentalServiceTest {
         RentalDto dto = new RentalDto();
         dto.setCarId(1L);
         dto.setStartDate(LocalDateTime.now().plusDays(5));
-        dto.setEndDate(LocalDateTime.now().plusDays(1)); // Помилка: кінець раніше за початок
+        dto.setEndDate(LocalDateTime.now().plusDays(1));
 
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
                 () -> rentalService.createRental(dto, "test@gmail.com"));
@@ -89,7 +89,7 @@ class RentalServiceTest {
     @Test
     void createRental_CarNotFound_ThrowsException() {
         RentalDto dto = new RentalDto();
-        dto.setCarId(99L); // Неіснуюче авто
+        dto.setCarId(99L);
         dto.setStartDate(LocalDateTime.now().plusDays(1));
         dto.setEndDate(LocalDateTime.now().plusDays(2));
 
@@ -104,7 +104,7 @@ class RentalServiceTest {
     @Test
     void createRental_CarNotAvailable_ThrowsException() {
         Car car = new Car();
-        car.setStatus("maintenance"); // Авто в ремонті
+        car.setStatus("maintenance");
 
         RentalDto dto = new RentalDto();
         dto.setCarId(1L);
